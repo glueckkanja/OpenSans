@@ -14,7 +14,7 @@ $fontHelpersPath = (Join-Path (Get-CurrentDirectory) 'FontHelpers.ps1')
 $fontUrl = 'https://www.google.com/fonts/download?kit=3hvsV99qyKCBS55e5pvb3k_UpNCUsIj1Q-eLvtScfRfjeAZG0syLSF0MtprGrcoF' # fonts.zip
 $destination = Join-Path $Env:Temp 'OpenSans'
 
-Install-ChocolateyZipPackage -url $fontUrl -unzipLocation $destination
+Install-ChocolateyZipPackage -PackageName 'OpenSans' -Url $fontUrl -UnzipLocation $destination
 
 $shell = New-Object -ComObject Shell.Application
 $fontsFolder = $shell.Namespace(0x14)
