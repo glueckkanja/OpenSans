@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>OpenSans</id>
+    <version>1.0.0</version>
+    <title>Open Sans Font</title>
+    <authors>Steve Matteson</authors>
+    <owners>gkchoco</owners>
+    <licenseUrl>https://www.apache.org/licenses/LICENSE-2.0.txt</licenseUrl>
+    <projectUrl>https://github.com/google/fonts</projectUrl>
+    <iconUrl>https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Open_Sans_sample.svg/203px-Open_Sans_sample.svg.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Open Sans is a humanist sans serif typeface designed by Steve Matteson, Type Director of Ascender Corp. This version contains the complete 897 character set, which includes the standard ISO Latin 1, Latin CE, Greek and Cyrillic character sets. Open Sans was designed with an upright stress, open forms and a neutral, yet friendly appearance. It was optimized for print, web, and mobile interfaces, and has excellent legibility characteristics in its letterforms.</description>
+    <summary>Humanist sans serif typeface</summary>
+    <tags>opensans open sans font typeface</tags>
+    <packageSourceUrl>https://github.com/glueckkanja/OpenSans</packageSourceUrl>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
