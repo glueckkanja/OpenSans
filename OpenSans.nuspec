@@ -17,5 +17,6 @@
   </metadata>
   <files>
     <file src="tools\**" target="tools" />
+    <file src="fonts\**" target="fonts" />
   </files>
 </package>

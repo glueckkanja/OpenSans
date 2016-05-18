@@ -1,25 +1,13 @@
-function Get-CurrentDirectory
-{
-  $thisName = $MyInvocation.MyCommand.Name
-  [IO.Path]::GetDirectoryName((Get-Content function:$thisName).File)
-}
-
 $package = 'OpenSans'
 
-$fontHelpersPath = (Join-Path (Get-CurrentDirectory) 'FontHelpers.ps1')
+$scriptRoot = (Split-Path -parent $MyInvocation.MyCommand.Definition)
+$fontHelpersPath = (Join-Path $scriptRoot 'FontHelpers.ps1')
 . $fontHelpersPath
-
-# collection url:
-# https://www.google.com/fonts#UsePlace:use/Collection:Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic|Open+Sans+Condensed:300,300italic,700
-$fontUrl = 'https://www.google.com/fonts/download?kit=3hvsV99qyKCBS55e5pvb3k_UpNCUsIj1Q-eLvtScfRfjeAZG0syLSF0MtprGrcoF' # fonts.zip
-$destination = Join-Path $Env:Temp 'OpenSans'
-
-Install-ChocolateyZipPackage -PackageName 'OpenSans' -Url $fontUrl -UnzipLocation $destination
 
 $shell = New-Object -ComObject Shell.Application
 $fontsFolder = $shell.Namespace(0x14)
 
-$fontFiles = Get-ChildItem $destination -Recurse -Filter *.ttf
+$fontFiles = Get-ChildItem (Join-Path $scriptRoot '..\fonts') -Recurse -Filter *.ttf
 
 # unfortunately the font install process totally ignores shell flags :(
 # http://social.technet.microsoft.com/Forums/en-IE/winserverpowershell/thread/fcc98ba5-6ce4-466b-a927-bb2cc3851b59
@@ -35,7 +23,3 @@ $fontFiles |
 
 $toExecute = ". $fontHelpersPath;" + ($commands -join ';')
 Start-ChocolateyProcessAsAdmin $toExecute
-
-Remove-Item $destination -Recurse
-
-
